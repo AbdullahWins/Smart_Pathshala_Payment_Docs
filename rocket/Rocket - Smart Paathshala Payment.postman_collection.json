@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "f3546298-63b2-4e39-b84a-f454b44ed7b9",
+		"name": "Rocket - Smart Paathshala Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24525532",
+		"_collection_link": "https://sendnades.postman.co/workspace/Netro~f7ded17f-21f9-46da-87ff-9a1927e1f7a1/collection/24525532-f3546298-63b2-4e39-b84a-f454b44ed7b9?action=share&source=collection_link&creator=24525532"
+	},
+	"item": [
+		{
+			"name": "Rocket",
+			"item": [
+				{
+					"name": "invoices/ussd/rocket/get-bill",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordRocket}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameRocket}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"student_username\": \n\"SPID9\"\n}",
+									"description": "GFHS20251 GFHS20252 GFHS20253 GFHS20254 GFHS20255 GFHS20256 GFHS20257",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/rocket/get-bill",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"rocket",
+								"get-bill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/rocket/accept-payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordRocket}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameRocket}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"institute_id\": \"SPID9\",\n  \"student_username\": \"SPID9\",\n  \"total_amount\": \"1282\",\n  \"user_wallet_number\": \"01773371221\",\n  \"trxid\": \"TRX123456781\",\n  \"paid_at\": \"20250513033036\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/rocket/accept-payment",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"rocket",
+								"accept-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/rocket/check-payment-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordRocket}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameRocket}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"trxid\": \"TRX123456781\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/rocket/check-payment-status",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"rocket",
+								"check-payment-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://backend.smartpathshalabd.com/api/v1",
+			"type": "default"
+		},
+		{
+			"key": "local",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "cloud",
+			"value": "https://backend.smartpathshalabd.com/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthUsernameRocket",
+			"value": "testUser",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthPasswordRocket",
+			"value": "testPassword",
+			"type": "string"
+		}
+	]
+}
