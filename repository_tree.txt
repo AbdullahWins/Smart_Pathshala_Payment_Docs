@@ -11,11 +11,9 @@ https://github.com/AbdullahWins/Smart_Pathshala_Payment_Docs/
     │   ├── smart-pathshala-banner.png   (Main banner for your project)
     │   ├── bkash-logo.png               (bKash logo)
     │   ├── rocket-logo.png              (Rocket logo)
-    │   └── footer-logo.png              (Small logo for footer)
     └── icons/
         ├── documentation.png            (Document icon)
         ├── netro-systems.png            (Company icon)
         ├── email.png                    (Email icon)
-        ├── github.png                   (GitHub icon)
         ├── linkedin.png                 (LinkedIn icon)
         └── user.png                     (User/profile icon)

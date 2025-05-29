@@ -152,13 +152,49 @@ data={
    - Call the `check-payment-status` endpoint with the institute_id and trxid
 
 
+
 ## Contact Information
 
 For questions, support, or further information regarding this API documentation, please contact:
 
-- **Name**: Abdullah Al MahMud
-- **Email**: abdudevs@gmail.com
-- **LinkedIn**: [https://www.linkedin.com/in/abdullahwins](https://www.linkedin.com/in/abdullahwins)
-- **GitHub**: [https://github.com/AbdullahWins](https://github.com/AbdullahWins)
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="../assets/icons/user.png" alt="Name Icon" width="24">
+      </td>
+      <td><strong>Name</strong></td>
+      <td>Abdullah Al MahMud</td>
+    </tr><tr>
+      <td align="center">
+        <img src="../assets/icons/netro-systems.png" alt="Company Icon" width="24">
+      </td>
+      <td><strong>Company</strong></td>
+      <td><a href="https://netrosystems.com">Netro Systems</a></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="../assets/icons/email.png" alt="Email Icon" width="24">
+      </td>
+      <td><strong>Email</strong></td>
+      <td><a href="mailto:abdudevs@gmail.com">abdudevs@gmail.com</a></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="../assets/icons/linkedin.png" alt="LinkedIn Icon" width="24">
+      </td>
+      <td><strong>LinkedIn</strong></td>
+      <td><a href="https://www.linkedin.com/in/abdullahwins">Abdullah Al MahMud</a></td>
+    </tr>
+  </table>
+</div>
 
-Last Updated: 2025-05-29
+<p align="center">
+  <small>Last Updated: 2025-May-29</small>
+</p>
+
+<hr>
+
+<p align="center">
+  <small>© 2025 Smart Paathshala. All rights reserved.</small>
+</p>

@@ -137,7 +137,7 @@ For questions, support, or further information regarding this API documentation,
         <img src="./assets/icons/netro-systems.png" alt="Company Icon" width="24">
       </td>
       <td><strong>Company</strong></td>
-      <td>Netro Systems</td>
+      <td><a href="https://netrosystems.com">Netro Systems</a></td>
     </tr>
     <tr>
       <td align="center">
@@ -151,26 +151,17 @@ For questions, support, or further information regarding this API documentation,
         <img src="./assets/icons/linkedin.png" alt="LinkedIn Icon" width="24">
       </td>
       <td><strong>LinkedIn</strong></td>
-      <td><a href="https://www.linkedin.com/in/abdullahwins">linkedin.com/in/abdullahwins</a></td>
-    </tr>
-    <tr>
-      <td align="center">
-        <img src="./assets/icons/github.png" alt="GitHub Icon" width="24">
-      </td>
-      <td><strong>GitHub</strong></td>
-      <td><a href="https://github.com/AbdullahWins">github.com/AbdullahWins</a></td>
+      <td><a href="https://www.linkedin.com/in/abdullahwins">Abdullah Al MahMud</a></td>
     </tr>
   </table>
 </div>
 
 <p align="center">
-  <small>Last Updated: 2025-05-29 09:31:05</small>
+  <small>Last Updated: 2025-May-29</small>
 </p>
 
 <hr>
 
 <p align="center">
-  <img src="./assets/images/footer-logo.png" alt="Smart Paathshala" width="120">
-  <br>
   <small>© 2025 Smart Paathshala. All rights reserved.</small>
 </p>
