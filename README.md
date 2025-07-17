@@ -110,19 +110,19 @@ The Smart Paathshala Payment API follows this general workflow:
       <td align="center" width="33.33%">
         <a href="./bkash/BKASH_README.md">
           <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
-          <strong>bKash Documentation</strong>
+          <strong>bKash<br>Documentation</strong>
         </a>
       </td>
       <td align="center" width="33.33%">
         <a href="./rocket/ROCKET_README.md">
           <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
-          <strong>Rocket Documentation</strong>
+          <strong>Rocket<br>Documentation</strong>
         </a>
       </td>
       <td align="center" width="33.33%">
         <a href="./tap/TAP_README.md">
           <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
-          <strong>Tap Documentation</strong>
+          <strong>Tap<br>Documentation</strong>
         </a>
       </td>
     </tr>
