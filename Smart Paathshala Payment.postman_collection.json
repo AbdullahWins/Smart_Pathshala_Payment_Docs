@@ -173,6 +173,12 @@
 								{
 									"key": "data",
 									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"trxid\": \"TRX123456789\"\n}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID7\",\n  \"trxid\": \"CED84BDW1C\"\n}",
 									"type": "text"
 								}
 							]
@@ -186,6 +192,199 @@
 								"invoices",
 								"ussd",
 								"bkash",
+								"check-payment-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tap",
+			"item": [
+				{
+					"name": "invoices/ussd/tap/get-bill",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordTap}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameTap}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"student_username\": \"SPID9\",\n  \"billing_month\": \"202507\"\n}",
+									"description": "GFHS20251 GFHS20252 GFHS20253 GFHS20254 GFHS20255 GFHS20256 GFHS20257",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/tap/get-bill",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"tap",
+								"get-bill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/tap/accept-payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordTap}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameTap}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"institute_id\": \"SPID9\",\n  \"student_username\": \"SPID9\",\n  \"billing_month\": \"202507\",\n  \"total_amount\": \"50\",\n  \"user_wallet_number\": \"01773371221\",\n  \"trxid\": \"TRX123456781\",\n  \"paid_at\": \"20250513033036\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/tap/accept-payment",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"tap",
+								"accept-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/tap/check-payment-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordTap}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameTap}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"trxid\": \"TRX123456789\"\n}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID7\",\n  \"trxid\": \"CED84BDW1C\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/tap/check-payment-status",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"tap",
 								"check-payment-status"
 							]
 						}
@@ -244,7 +443,7 @@
 							"formdata": [
 								{
 									"key": "data",
-									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"student_username\": \n\"SPID9\"\n}",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"student_username\": \n  \"SPID9\"\n}",
 									"description": "GFHS20251 GFHS20252 GFHS20253 GFHS20254 GFHS20255 GFHS20256 GFHS20257",
 									"type": "text"
 								}
@@ -438,6 +637,21 @@
 		{
 			"key": "basicAuthPasswordRocket",
 			"value": "testPassword",
+			"type": "string"
+		},
+		{
+			"key": "testUrl",
+			"value": "http://153.92.5.47:1111/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthUsernameTap",
+			"value": "testTapUser",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthPasswordTap",
+			"value": "testTapPassword",
 			"type": "string"
 		}
 	]
