@@ -6,7 +6,7 @@
 
 ## Overview
 
-This documentation covers the Smart Paathshala Payment API, which provides integration with multiple mobile financial services in Bangladesh, including bKash and Rocket. The API allows educational institutions to manage student bill generation and payment processing through USSD (Unstructured Supplementary Service Data) channels.
+This documentation covers the Smart Paathshala Payment API, which provides integration with multiple mobile financial services in Bangladesh, including bKash, Rocket, and Tap. The API allows educational institutions to manage student bill generation and payment processing through USSD (Unstructured Supplementary Service Data) channels.
 
 ## Base URL
 
@@ -19,18 +19,25 @@ https://backend.smartpathshalabd.com/api/v1
 <div align="center">
   <table>
     <tr>
-      <td align="center" width="50%">
+      <td align="center" width="33.33%">
         <a href="./bkash/BKASH_README.md">
           <img src="./assets/images/bkash-logo.png" alt="bKash Logo" width="200"><br>
           <strong>bKash</strong><br>
           Bangladesh's leading mobile financial service
         </a>
       </td>
-      <td align="center" width="50%">
+      <td align="center" width="33.33%">
         <a href="./rocket/ROCKET_README.md">
           <img src="./assets/images/rocket-logo.png" alt="Rocket Logo" width="200"><br>
           <strong>Rocket</strong><br>
           Mobile banking service by Dutch-Bangla Bank
+        </a>
+      </td>
+      <td align="center" width="33.33%">
+        <a href="./tap/TAP_README.md">
+          <img src="./assets/images/tap-logo.png" alt="Tap Logo" width="200"><br>
+          <strong>Tap</strong><br>
+          Digital payment solution for Bangladesh
         </a>
       </td>
     </tr>
@@ -43,6 +50,7 @@ All API endpoints are secured with Basic Authentication. Each payment provider h
 
 - **bKash**: Requires specific bKash Basic Auth credentials
 - **Rocket**: Requires specific Rocket Basic Auth credentials
+- **Tap**: Requires specific Tap Basic Auth credentials
 
 Basic Authentication credentials should be included in the headers of each request.
 
@@ -83,6 +91,8 @@ The API collection uses the following environment variables:
 | `basicAuthPasswordBkash` | Password for bKash Basic Authentication |
 | `basicAuthUsernameRocket` | Username for Rocket Basic Authentication |
 | `basicAuthPasswordRocket` | Password for Rocket Basic Authentication |
+| `basicAuthUsernameTap` | Username for Tap Basic Authentication |
+| `basicAuthPasswordTap` | Password for Tap Basic Authentication |
 
 ## API Workflow
 
@@ -97,16 +107,22 @@ The Smart Paathshala Payment API follows this general workflow:
 <div align="center">
   <table>
     <tr>
-      <td align="center" width="50%">
+      <td align="center" width="33.33%">
         <a href="./bkash/BKASH_README.md">
           <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
           <strong>bKash Documentation</strong>
         </a>
       </td>
-      <td align="center" width="50%">
+      <td align="center" width="33.33%">
         <a href="./rocket/ROCKET_README.md">
           <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
           <strong>Rocket Documentation</strong>
+        </a>
+      </td>
+      <td align="center" width="33.33%">
+        <a href="./tap/TAP_README.md">
+          <img src="./assets/icons/documentation.png" alt="Documentation Icon" width="48"><br>
+          <strong>Tap Documentation</strong>
         </a>
       </td>
     </tr>
@@ -119,6 +135,7 @@ For testing the API endpoints, you can use the Postman collections provided in t
 
 - [bKash Postman Collection](./bkash/Bkash%20-%20Smart%20Paathshala%20Payment.postman_collection.json)
 - [Rocket Postman Collection](./rocket/Rocket%20-%20Smart%20Paathshala%20Payment.postman_collection.json)
+- [Tap Postman Collection](./tap/Tap%20-%20Smart%20Paathshala%20Payment.postman_collection.json)
 
 ## Contact Information
 
@@ -157,7 +174,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2025-May-29</small>
+  <small>Last Updated: 2025-July-17</small>
 </p>
 
 <hr>
