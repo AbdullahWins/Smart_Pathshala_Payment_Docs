@@ -3,14 +3,22 @@ https://github.com/AbdullahWins/Smart_Pathshala_Payment_Docs/
 ├── bkash/
 │   └── BKASH_README.md
 │   └── Bkash - Smart Paathshala Payment.postman_collection.json
+│   └── Bkash-Official Documentation.pdf
 ├── rocket/
 │   └── ROCKET_README.md
 │   └── Rocket - Smart Paathshala Payment.postman_collection.json
+│   └── Rocket-Official Documentation.pdf
+├── tap/
+│   └── TAP_README.md
+│   └── Tap - Smart Paathshala Payment.postman_collection.json
+│   └── Tap- MIS Official Documentation.pdf
 └── assets/
     ├── images/
-    │   ├── smart-pathshala-banner.png   (Main banner for your project)
+    │   ├── smart-pathshala-banner.png   (Main banner)
+    │   ├── footer-logo.png              (Footer Logo)
     │   ├── bkash-logo.png               (bKash logo)
     │   ├── rocket-logo.png              (Rocket logo)
+    │   ├── tap-logo.png                 (Tap logo)
     └── icons/
         ├── documentation.png            (Document icon)
         ├── netro-systems.png            (Company icon)
