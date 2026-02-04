@@ -12,6 +12,10 @@ https://github.com/AbdullahWins/Smart_Pathshala_Payment_Docs/
 │   └── TAP_README.md
 │   └── Tap - Smart Paathshala Payment.postman_collection.json
 │   └── Tap- MIS Official Documentation.pdf
+├── cellfin/
+│   └── CELLFIN_README.md
+│   └── Cellfin - Smart Paathshala Payment.postman_collection.json
+│   └── Cellfin-Official Documentation.pdf
 └── assets/
     ├── images/
     │   ├── smart-pathshala-banner.png   (Main banner)
@@ -19,6 +23,7 @@ https://github.com/AbdullahWins/Smart_Pathshala_Payment_Docs/
     │   ├── bkash-logo.png               (bKash logo)
     │   ├── rocket-logo.png              (Rocket logo)
     │   ├── tap-logo.png                 (Tap logo)
+    │   ├── cellfin-logo.png             (Cellfin logo)
     └── icons/
         ├── documentation.png            (Document icon)
         ├── netro-systems.png            (Company icon)

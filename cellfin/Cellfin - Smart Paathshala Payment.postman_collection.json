@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "0210cece-4e8c-440d-b33c-62f506b2aebc",
+		"name": "Cellfin - Smart Paathshala Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24525532",
+		"_collection_link": "https://sendnades.postman.co/workspace/Netro~f7ded17f-21f9-46da-87ff-9a1927e1f7a1/collection/24525532-0210cece-4e8c-440d-b33c-62f506b2aebc?action=share&source=collection_link&creator=24525532"
+	},
+	"item": [
+		{
+			"name": "Cellfin",
+			"item": [
+				{
+					"name": "invoices/ussd/cellfin/get-bill",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordCellfin}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameCellfin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"student_username\": \"SPID9\",\n  \"billing_month\": \"202505\"\n}",
+									"description": "GFHS20251 GFHS20252 GFHS20253 GFHS20254 GFHS20255 GFHS20256 GFHS20257",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/cellfin/get-bill",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"cellfin",
+								"get-bill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/cellfin/accept-payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordCellfin}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameCellfin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n  \"institute_id\": \"SPID9\",\n  \"student_username\": \"SPID9\",\n  \"billing_month\": \"202505\",\n  \"total_amount\": \"50\",\n  \"user_wallet_number\": \"01773371221\",\n  \"trxid\": \"TRX123456781\",\n  \"paid_at\": \"20250513033036\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/cellfin/accept-payment",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"cellfin",
+								"accept-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices/ussd/cellfin/check-payment-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{basicAuthPasswordCellfin}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{basicAuthUsernameCellfin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \n  \"institute_id\": \"SPID9\",\n  \"trxid\": \"TRX123456789\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/ussd/cellfin/check-payment-status",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"ussd",
+								"cellfin",
+								"check-payment-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://backend.smartpathshalabd.com/api/v1",
+			"type": "default"
+		},
+		{
+			"key": "basicAuthUsernameCellfin",
+			"value": "testUser",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthPasswordCellfin",
+			"value": "testPassword",
+			"type": "string"
+		},
+		{
+			"key": "local",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "cloud",
+			"value": "https://backend.smartpathshalabd.com/api/v1",
+			"type": "string"
+		}
+	]
+}
