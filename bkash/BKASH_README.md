@@ -20,11 +20,13 @@ These should be set as environment variables in your Postman environment or appl
 Retrieves billing information for a student for a specific month.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/bkash/get-bill
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -33,13 +35,14 @@ POST {{baseURL}}/invoices/ussd/bkash/get-bill
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which the bill is requested (format: YYYYMM) |
+| Parameter          | Type   | Description                                            |
+| ------------------ | ------ | ------------------------------------------------------ |
+| `institute_id`     | String | Unique identifier for the institution                  |
+| `student_username` | String | Unique identifier for the student                      |
+| `billing_month`    | String | Month for which the bill is requested (format: YYYYMM) |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/bkash/get-bill HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -53,16 +56,39 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {
+    "institute_id": "SPID9",
+    "total_amount": "606",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "billing_month": "202505",
+    "status": "Pending",
+    "due_date": "20250724",
+    "query_time": "20250717100015"
+  },
+  "meta": null
+}
+```
+
 ### 2. Accept Payment
 
 Records a payment made through bKash.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/bkash/accept-payment
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -75,17 +101,18 @@ POST {{baseURL}}/invoices/ussd/bkash/accept-payment
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which payment is made (format: YYYYMM) |
-| `total_amount` | String | Amount paid (in Bangladeshi Taka) |
-| `user_wallet_number` | String | bKash wallet number used for payment |
-| `trxid` | String | Unique transaction ID from bKash |
-| `paid_at` | String | Payment timestamp (format: YYYYMMDDHHmmss) |
+| Parameter            | Type   | Description                                      |
+| -------------------- | ------ | ------------------------------------------------ |
+| `institute_id`       | String | Unique identifier for the institution            |
+| `student_username`   | String | Unique identifier for the student                |
+| `billing_month`      | String | Month for which payment is made (format: YYYYMM) |
+| `total_amount`       | String | Amount paid (in Bangladeshi Taka)                |
+| `user_wallet_number` | String | bKash wallet number used for payment             |
+| `trxid`              | String | Unique transaction ID from bKash                 |
+| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss)       |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/bkash/accept-payment HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -103,16 +130,39 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Invoice is paid!",
+  "data": {
+    "institute_id": "SPID9",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "billing_month": "202505",
+    "total_amount": "50",
+    "user_wallet_number": "01773371221",
+    "trxid": "TRX123456781",
+    "pay_time": "20250717100055"
+  },
+  "meta": null
+}
+```
+
 ### 3. Check Payment Status
 
 Checks the status of a payment using the transaction ID.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/bkash/check-payment-status
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -120,12 +170,13 @@ POST {{baseURL}}/invoices/ussd/bkash/check-payment-status
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter      | Type   | Description                           |
+| -------------- | ------ | ------------------------------------- |
 | `institute_id` | String | Unique identifier for the institution |
-| `trxid` | String | Unique transaction ID to check |
+| `trxid`        | String | Unique transaction ID to check        |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/bkash/check-payment-status HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -135,6 +186,25 @@ Content-Type: multipart/form-data
 data={
   "institute_id": "SPID9",
   "trxid": "TRX123456789"
+}
+```
+
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {
+    "institute_id": "SPID9",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "total_amount": "50",
+    "trxid": "TRX123456789",
+    "pay_time": "20250717100055"
+  },
+  "meta": null
 }
 ```
 
@@ -152,8 +222,6 @@ data={
 3. **Verify Payment Status**:
    - To check if a payment was successful
    - Call the `check-payment-status` endpoint with the institute_id and trxid
-
-
 
 ## Contact Information
 
@@ -192,7 +260,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2025-May-29</small>
+  <small>Last Updated: 2026-May-05</small>
 </p>
 
 <hr>
@@ -200,4 +268,3 @@ For questions, support, or further information regarding this API documentation,
 <p align="center">
   <small>© 2025 Smart Paathshala. All rights reserved.</small>
 </p>
-

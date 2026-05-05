@@ -1,14 +1,14 @@
-# Smart Paathshala Rocket Payment Integration
+# Smart Paathshala Cellfin Payment Integration
 
-This documentation covers the Rocket payment integration for Smart Paathshala's payment system.
+This documentation covers the Cellfin payment integration for Smart Paathshala's payment system.
 
 ## Authentication
 
-All Rocket API endpoints require Basic Authentication with the following credentials:
+All Cellfin API endpoints require Basic Authentication with the following credentials:
 
 ```
-Username: {{basicAuthUsernameRocket}}
-Password: {{basicAuthPasswordRocket}}
+Username: {{basicAuthUsernameCellfin}}
+Password: {{basicAuthPasswordCellfin}}
 ```
 
 These should be set as environment variables in your Postman environment or application configuration.
@@ -17,12 +17,12 @@ These should be set as environment variables in your Postman environment or appl
 
 ### 1. Get Bill Information
 
-Retrieves billing information for a student.
+Retrieves billing information for a student for a specific month.
 
 **Endpoint:**
 
 ```
-POST {{baseURL}}/invoices/ussd/rocket/get-bill
+POST {{baseURL}}/invoices/ussd/cellfin/get-bill
 ```
 
 **Request Parameters:**
@@ -30,26 +30,29 @@ POST {{baseURL}}/invoices/ussd/rocket/get-bill
 ```json
 {
   "institute_id": "SPID9",
-  "student_username": "SPID9"
+  "student_username": "SPID9",
+  "billing_month": "202505"
 }
 ```
 
-| Parameter          | Type   | Description                           |
-| ------------------ | ------ | ------------------------------------- |
-| `institute_id`     | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student     |
+| Parameter          | Type   | Description                                            |
+| ------------------ | ------ | ------------------------------------------------------ |
+| `institute_id`     | String | Unique identifier for the institution                  |
+| `student_username` | String | Unique identifier for the student                      |
+| `billing_month`    | String | Month for which the bill is requested (format: YYYYMM) |
 
 **Example Request:**
 
 ```
-POST /api/v1/invoices/ussd/rocket/get-bill HTTP/1.1
+POST /api/v1/invoices/ussd/cellfin/get-bill HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
 Content-Type: multipart/form-data
 
 data={
   "institute_id": "SPID9",
-  "student_username": "SPID9"
+  "student_username": "SPID9",
+  "billing_month": "202505"
 }
 ```
 
@@ -57,32 +60,37 @@ data={
 
 ```json
 {
-  "statusCode": 200,
-  "success": true,
-  "message": "Retrieved successfully!",
-  "data": {
-    "institute_id": "SPID9",
-    "total_amount": "1282",
-    "student_name": "Abdullah Al MahMud",
-    "student_username": "SPID9",
-    "status": "Pending",
-    "due_date": "20250724",
-    "query_time": "20250717100015"
-  },
-  "meta": null
+  "referenceId": "SPID9",
+  "dateTime": "17/07/2025 10:00 AM",
+  "responseCode": "00",
+  "responseMsg": "SUCCESS",
+  "feeDetails": {
+    "studentId": "SPID9",
+    "instituteName": "SPID9",
+    "branchName": null,
+    "shift": null,
+    "className": "Class 10",
+    "sectionName": null,
+    "invoiceNo": "202505",
+    "studentName": "Abdullah Al MahMud",
+    "fatherName": "Abdur Rahman",
+    "month": "May",
+    "academicYear": "2025",
+    "fee": 50,
+    "waiver": null,
+    "totalDue": 50
+  }
 }
 ```
-
-**Note**: Unlike bKash, the Rocket get-bill endpoint does not require a billing_month parameter.
 
 ### 2. Accept Payment
 
-Records a payment made through Rocket.
+Records a payment made through Cellfin.
 
 **Endpoint:**
 
 ```
-POST {{baseURL}}/invoices/ussd/rocket/accept-payment
+POST {{baseURL}}/invoices/ussd/cellfin/accept-payment
 ```
 
 **Request Parameters:**
@@ -91,26 +99,28 @@ POST {{baseURL}}/invoices/ussd/rocket/accept-payment
 {
   "institute_id": "SPID9",
   "student_username": "SPID9",
-  "total_amount": "1282",
+  "billing_month": "202505",
+  "total_amount": "50",
   "user_wallet_number": "01773371221",
   "trxid": "TRX123456781",
   "paid_at": "20250513033036"
 }
 ```
 
-| Parameter            | Type   | Description                                |
-| -------------------- | ------ | ------------------------------------------ |
-| `institute_id`       | String | Unique identifier for the institution      |
-| `student_username`   | String | Unique identifier for the student          |
-| `total_amount`       | String | Amount paid (in Bangladeshi Taka)          |
-| `user_wallet_number` | String | Rocket wallet number used for payment      |
-| `trxid`              | String | Unique transaction ID from Rocket          |
-| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss) |
+| Parameter            | Type   | Description                                      |
+| -------------------- | ------ | ------------------------------------------------ |
+| `institute_id`       | String | Unique identifier for the institution            |
+| `student_username`   | String | Unique identifier for the student                |
+| `billing_month`      | String | Month for which payment is made (format: YYYYMM) |
+| `total_amount`       | String | Amount paid (in Bangladeshi Taka)                |
+| `user_wallet_number` | String | Cellfin wallet number used for payment           |
+| `trxid`              | String | Unique transaction ID from Cellfin               |
+| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss)       |
 
 **Example Request:**
 
 ```
-POST /api/v1/invoices/ussd/rocket/accept-payment HTTP/1.1
+POST /api/v1/invoices/ussd/cellfin/accept-payment HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
 Content-Type: multipart/form-data
@@ -118,7 +128,8 @@ Content-Type: multipart/form-data
 data={
   "institute_id": "SPID9",
   "student_username": "SPID9",
-  "total_amount": "1282",
+  "billing_month": "202505",
+  "total_amount": "50",
   "user_wallet_number": "01773371221",
   "trxid": "TRX123456781",
   "paid_at": "20250513033036"
@@ -129,23 +140,10 @@ data={
 
 ```json
 {
-  "statusCode": 200,
-  "success": true,
-  "message": "Invoice is paid!",
-  "data": {
-    "institute_id": "SPID9",
-    "student_name": "Abdullah Al MahMud",
-    "student_username": "SPID9",
-    "total_amount": "1282",
-    "user_wallet_number": "01773371221",
-    "trxid": "TRX123456781",
-    "pay_time": "20250717100055"
-  },
-  "meta": null
+  "responseCode": "00",
+  "responseMsg": "success"
 }
 ```
-
-**Note**: Unlike bKash, the Rocket accept-payment endpoint does not require a billing_month parameter.
 
 ### 3. Check Payment Status
 
@@ -154,7 +152,7 @@ Checks the status of a payment using the transaction ID.
 **Endpoint:**
 
 ```
-POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
+POST {{baseURL}}/invoices/ussd/cellfin/check-payment-status
 ```
 
 **Request Parameters:**
@@ -162,7 +160,7 @@ POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
 ```json
 {
   "institute_id": "SPID9",
-  "trxid": "TRX123456781"
+  "trxid": "TRX123456789"
 }
 ```
 
@@ -174,14 +172,14 @@ POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
 **Example Request:**
 
 ```
-POST /api/v1/invoices/ussd/rocket/check-payment-status HTTP/1.1
+POST /api/v1/invoices/ussd/cellfin/check-payment-status HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
 Content-Type: multipart/form-data
 
 data={
   "institute_id": "SPID9",
-  "trxid": "TRX123456781"
+  "trxid": "TRX123456789"
 }
 ```
 
@@ -196,8 +194,8 @@ data={
     "institute_id": "SPID9",
     "student_name": "Abdullah Al MahMud",
     "student_username": "SPID9",
-    "total_amount": "1282",
-    "trxid": "TRX123456781",
+    "total_amount": "50",
+    "trxid": "TRX123456789",
     "pay_time": "20250717100055"
   },
   "meta": null
@@ -208,10 +206,10 @@ data={
 
 1. **Get Bill Information**:
    - Call the `get-bill` endpoint to retrieve the bill amount for a student
-   - Use the institute_id and student_username to identify the specific bill
+   - Use the institute_id, student_username, and billing_month to identify the specific bill
 
 2. **Process Payment**:
-   - After user completes payment through Rocket
+   - After user completes payment through Cellfin
    - Call the `accept-payment` endpoint with transaction details
    - Include all required parameters including trxid and paid_at timestamp
 
@@ -262,5 +260,5 @@ For questions, support, or further information regarding this API documentation,
 <hr>
 
 <p align="center">
-  <small>© 2025 Smart Paathshala. All rights reserved.</small>
+  <small>© 2026 Smart Paathshala. All rights reserved.</small>
 </p>
