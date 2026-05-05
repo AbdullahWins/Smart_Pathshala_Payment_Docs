@@ -79,28 +79,44 @@ data={
 }
 ```
 
+## Common Response Format
+
+Most invoice/payment endpoints return a JSON response like this:
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {},
+  "meta": null
+}
+```
+
+Tap and Cellfin use provider-specific wrappers, but the invoice payloads are still documented in the provider READMEs below.
+
 ## Common Parameters
 
 Most endpoints require the following parameters:
 
-| Parameter | Description |
-|-----------|-------------|
-| `institute_id` | The unique identifier for the educational institution (e.g., "SPID9") |
-| `student_username` | The unique identifier for the student (e.g., "SPID9") |
+| Parameter          | Description                                                           |
+| ------------------ | --------------------------------------------------------------------- |
+| `institute_id`     | The unique identifier for the educational institution (e.g., "SPID9") |
+| `student_username` | The unique identifier for the student (e.g., "SPID9")                 |
 
 ## Environment Variables
 
 The API collection uses the following environment variables:
 
-| Variable | Description |
-|----------|-------------|
-| `baseURL` | The base URL for the API |
-| `basicAuthUsernameBkash` | Username for bKash Basic Authentication |
-| `basicAuthPasswordBkash` | Password for bKash Basic Authentication |
-| `basicAuthUsernameRocket` | Username for Rocket Basic Authentication |
-| `basicAuthPasswordRocket` | Password for Rocket Basic Authentication |
-| `basicAuthUsernameTap` | Username for Tap Basic Authentication |
-| `basicAuthPasswordTap` | Password for Tap Basic Authentication |
+| Variable                   | Description                               |
+| -------------------------- | ----------------------------------------- |
+| `baseURL`                  | The base URL for the API                  |
+| `basicAuthUsernameBkash`   | Username for bKash Basic Authentication   |
+| `basicAuthPasswordBkash`   | Password for bKash Basic Authentication   |
+| `basicAuthUsernameRocket`  | Username for Rocket Basic Authentication  |
+| `basicAuthPasswordRocket`  | Password for Rocket Basic Authentication  |
+| `basicAuthUsernameTap`     | Username for Tap Basic Authentication     |
+| `basicAuthPasswordTap`     | Password for Tap Basic Authentication     |
 | `basicAuthUsernameCellfin` | Username for Cellfin Basic Authentication |
 | `basicAuthPasswordCellfin` | Password for Cellfin Basic Authentication |
 
@@ -111,6 +127,48 @@ The Smart Paathshala Payment API follows this general workflow:
 1. **Get Bill Information**: Retrieve bill details for a specific student
 2. **Process Payment**: Record payment made through the mobile financial service
 3. **Verify Payment Status**: Confirm if the payment was successful
+
+## Invoice Response Shapes
+
+The payment flow returns a small set of reusable invoice payloads:
+
+```json
+{
+  "institute_id": "SPID9",
+  "total_amount": "606",
+  "student_name": "Abdullah Al MahMud",
+  "student_username": "SPID9",
+  "status": "Pending",
+  "due_date": "20250724",
+  "query_time": "20250717100015"
+}
+```
+
+```json
+{
+  "institute_id": "SPID9",
+  "student_name": "Abdullah Al MahMud",
+  "student_username": "SPID9",
+  "billing_month": "202507",
+  "total_amount": "606",
+  "user_wallet_number": "01773371221",
+  "trxid": "TRX123456777",
+  "pay_time": "20250717100055"
+}
+```
+
+```json
+{
+  "institute_id": "SPID9",
+  "student_name": "Abdullah Al MahMud",
+  "student_username": "SPID9",
+  "total_amount": "606",
+  "trxid": "TRX123456777",
+  "pay_time": "20250717100055"
+}
+```
+
+Cellfin bill responses differ slightly and return `referenceId`, `dateTime`, `responseCode`, `responseMsg`, and `feeDetails`.
 
 ## Additional Resources
 
@@ -191,7 +249,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2026-Feb-04</small>
+  <small>Last Updated: 2026-May-05</small>
 </p>
 
 <hr>
