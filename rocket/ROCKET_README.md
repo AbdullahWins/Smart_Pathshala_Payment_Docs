@@ -45,7 +45,7 @@ POST {{baseURL}}/invoices/ussd/rocket/get-bill
 POST /api/v1/invoices/ussd/rocket/get-bill HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
@@ -113,7 +113,7 @@ POST {{baseURL}}/invoices/ussd/rocket/accept-payment
 POST /api/v1/invoices/ussd/rocket/accept-payment HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
@@ -177,7 +177,7 @@ POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
 POST /api/v1/invoices/ussd/rocket/check-payment-status HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
