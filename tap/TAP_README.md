@@ -20,11 +20,13 @@ These should be set as environment variables in your Postman environment or appl
 Retrieves billing information for a student for a specific month.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/tap/get-bill
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -33,13 +35,14 @@ POST {{baseURL}}/invoices/ussd/tap/get-bill
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which the bill is requested (format: YYYYMM) |
+| Parameter          | Type   | Description                                            |
+| ------------------ | ------ | ------------------------------------------------------ |
+| `institute_id`     | String | Unique identifier for the institution                  |
+| `student_username` | String | Unique identifier for the student                      |
+| `billing_month`    | String | Month for which the bill is requested (format: YYYYMM) |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/tap/get-bill HTTP/1.1
 Host: localhost:5000
@@ -54,6 +57,7 @@ data={
 ```
 
 **Response:**
+
 ```json
 {
   "statusCode": 200,
@@ -77,11 +81,13 @@ data={
 Records a payment made through Tap.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/tap/accept-payment
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -94,17 +100,18 @@ POST {{baseURL}}/invoices/ussd/tap/accept-payment
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which payment is made (format: YYYYMM) |
-| `total_amount` | String | Amount paid (in Bangladeshi Taka) |
-| `user_wallet_number` | String | Tap wallet number used for payment |
-| `trxid` | String | Unique transaction ID from Tap |
-| `paid_at` | String | Payment timestamp (format: YYYYMMDDHHmmss) |
+| Parameter            | Type   | Description                                      |
+| -------------------- | ------ | ------------------------------------------------ |
+| `institute_id`       | String | Unique identifier for the institution            |
+| `student_username`   | String | Unique identifier for the student                |
+| `billing_month`      | String | Month for which payment is made (format: YYYYMM) |
+| `total_amount`       | String | Amount paid (in Bangladeshi Taka)                |
+| `user_wallet_number` | String | Tap wallet number used for payment               |
+| `trxid`              | String | Unique transaction ID from Tap                   |
+| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss)       |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/tap/accept-payment HTTP/1.1
 Host: localhost:5000
@@ -123,11 +130,12 @@ data={
 ```
 
 **Response:**
+
 ```json
 {
   "statusCode": 200,
   "success": true,
-  "message": "Updated successfully!",
+  "message": "Invoice is paid!",
   "data": {
     "institute_id": "SPID9",
     "student_name": "Abdullah Al MahMud",
@@ -147,11 +155,13 @@ data={
 Checks the status of a payment using the transaction ID.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/tap/check-payment-status
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -159,12 +169,13 @@ POST {{baseURL}}/invoices/ussd/tap/check-payment-status
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter      | Type   | Description                           |
+| -------------- | ------ | ------------------------------------- |
 | `institute_id` | String | Unique identifier for the institution |
-| `trxid` | String | Unique transaction ID to check |
+| `trxid`        | String | Unique transaction ID to check        |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/tap/check-payment-status HTTP/1.1
 Host: localhost:5000
@@ -178,6 +189,7 @@ data={
 ```
 
 **Response:**
+
 ```json
 {
   "statusCode": 200,
@@ -247,7 +259,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2025-July-17</small>
+  <small>Last Updated: 2026-May-05</small>
 </p>
 
 <hr>

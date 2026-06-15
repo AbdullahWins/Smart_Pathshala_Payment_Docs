@@ -20,11 +20,13 @@ These should be set as environment variables in your Postman environment or appl
 Retrieves billing information for a student for a specific month.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/cellfin/get-bill
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -33,13 +35,14 @@ POST {{baseURL}}/invoices/ussd/cellfin/get-bill
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which the bill is requested (format: YYYYMM) |
+| Parameter          | Type   | Description                                            |
+| ------------------ | ------ | ------------------------------------------------------ |
+| `institute_id`     | String | Unique identifier for the institution                  |
+| `student_username` | String | Unique identifier for the student                      |
+| `billing_month`    | String | Month for which the bill is requested (format: YYYYMM) |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/cellfin/get-bill HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -53,16 +56,45 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "referenceId": "SPID9",
+  "dateTime": "17/07/2025 10:00 AM",
+  "responseCode": "00",
+  "responseMsg": "SUCCESS",
+  "feeDetails": {
+    "studentId": "SPID9",
+    "instituteName": "SPID9",
+    "branchName": null,
+    "shift": null,
+    "className": "Class 10",
+    "sectionName": null,
+    "invoiceNo": "202505",
+    "studentName": "Abdullah Al MahMud",
+    "fatherName": "Abdur Rahman",
+    "month": "May",
+    "academicYear": "2025",
+    "fee": 50,
+    "waiver": null,
+    "totalDue": 50
+  }
+}
+```
+
 ### 2. Accept Payment
 
 Records a payment made through Cellfin.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/cellfin/accept-payment
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -75,17 +107,18 @@ POST {{baseURL}}/invoices/ussd/cellfin/accept-payment
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `billing_month` | String | Month for which payment is made (format: YYYYMM) |
-| `total_amount` | String | Amount paid (in Bangladeshi Taka) |
-| `user_wallet_number` | String | Cellfin wallet number used for payment |
-| `trxid` | String | Unique transaction ID from Cellfin |
-| `paid_at` | String | Payment timestamp (format: YYYYMMDDHHmmss) |
+| Parameter            | Type   | Description                                      |
+| -------------------- | ------ | ------------------------------------------------ |
+| `institute_id`       | String | Unique identifier for the institution            |
+| `student_username`   | String | Unique identifier for the student                |
+| `billing_month`      | String | Month for which payment is made (format: YYYYMM) |
+| `total_amount`       | String | Amount paid (in Bangladeshi Taka)                |
+| `user_wallet_number` | String | Cellfin wallet number used for payment           |
+| `trxid`              | String | Unique transaction ID from Cellfin               |
+| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss)       |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/cellfin/accept-payment HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -103,16 +136,27 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "responseCode": "00",
+  "responseMsg": "success"
+}
+```
+
 ### 3. Check Payment Status
 
 Checks the status of a payment using the transaction ID.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/cellfin/check-payment-status
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -120,12 +164,13 @@ POST {{baseURL}}/invoices/ussd/cellfin/check-payment-status
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter      | Type   | Description                           |
+| -------------- | ------ | ------------------------------------- |
 | `institute_id` | String | Unique identifier for the institution |
-| `trxid` | String | Unique transaction ID to check |
+| `trxid`        | String | Unique transaction ID to check        |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/cellfin/check-payment-status HTTP/1.1
 Host: backend.smartpathshalabd.com
@@ -135,6 +180,25 @@ Content-Type: multipart/form-data
 data={
   "institute_id": "SPID9",
   "trxid": "TRX123456789"
+}
+```
+
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {
+    "institute_id": "SPID9",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "total_amount": "50",
+    "trxid": "TRX123456789",
+    "pay_time": "20250717100055"
+  },
+  "meta": null
 }
 ```
 
@@ -152,8 +216,6 @@ data={
 3. **Verify Payment Status**:
    - To check if a payment was successful
    - Call the `check-payment-status` endpoint with the institute_id and trxid
-
-
 
 ## Contact Information
 
@@ -192,7 +254,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2026-Feb-04</small>
+  <small>Last Updated: 2026-May-05</small>
 </p>
 
 <hr>
@@ -200,4 +262,3 @@ For questions, support, or further information regarding this API documentation,
 <p align="center">
   <small>© 2026 Smart Paathshala. All rights reserved.</small>
 </p>
-

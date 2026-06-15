@@ -53,6 +53,26 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {
+    "institute_id": "SPID9",
+    "total_amount": "1282",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "status": "Pending",
+    "due_date": "20250724",
+    "query_time": "20250717100015"
+  },
+  "meta": null
+}
+```
+
 **Note**: Unlike bKash, the Rocket get-bill endpoint does not require a billing_month parameter.
 
 ### 2. Accept Payment
@@ -105,6 +125,26 @@ data={
 }
 ```
 
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Invoice is paid!",
+  "data": {
+    "institute_id": "SPID9",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "total_amount": "1282",
+    "user_wallet_number": "01773371221",
+    "trxid": "TRX123456781",
+    "pay_time": "20250717100055"
+  },
+  "meta": null
+}
+```
+
 **Note**: Unlike bKash, the Rocket accept-payment endpoint does not require a billing_month parameter.
 
 ### 3. Check Payment Status
@@ -142,6 +182,25 @@ Content-Type: application/json
 data={
   "institute_id": "SPID9",
   "trxid": "TRX123456781"
+}
+```
+
+**Response:**
+
+```json
+{
+  "statusCode": 200,
+  "success": true,
+  "message": "Retrieved successfully!",
+  "data": {
+    "institute_id": "SPID9",
+    "student_name": "Abdullah Al MahMud",
+    "student_username": "SPID9",
+    "total_amount": "1282",
+    "trxid": "TRX123456781",
+    "pay_time": "20250717100055"
+  },
+  "meta": null
 }
 ```
 
@@ -197,7 +256,7 @@ For questions, support, or further information regarding this API documentation,
 </div>
 
 <p align="center">
-  <small>Last Updated: 2025-May-29</small>
+  <small>Last Updated: 2026-May-05</small>
 </p>
 
 <hr>
