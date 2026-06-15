@@ -20,11 +20,13 @@ These should be set as environment variables in your Postman environment or appl
 Retrieves billing information for a student.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/rocket/get-bill
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -32,17 +34,18 @@ POST {{baseURL}}/invoices/ussd/rocket/get-bill
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
+| Parameter          | Type   | Description                           |
+| ------------------ | ------ | ------------------------------------- |
+| `institute_id`     | String | Unique identifier for the institution |
+| `student_username` | String | Unique identifier for the student     |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/rocket/get-bill HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
@@ -57,11 +60,13 @@ data={
 Records a payment made through Rocket.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/rocket/accept-payment
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -73,21 +78,22 @@ POST {{baseURL}}/invoices/ussd/rocket/accept-payment
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `institute_id` | String | Unique identifier for the institution |
-| `student_username` | String | Unique identifier for the student |
-| `total_amount` | String | Amount paid (in Bangladeshi Taka) |
-| `user_wallet_number` | String | Rocket wallet number used for payment |
-| `trxid` | String | Unique transaction ID from Rocket |
-| `paid_at` | String | Payment timestamp (format: YYYYMMDDHHmmss) |
+| Parameter            | Type   | Description                                |
+| -------------------- | ------ | ------------------------------------------ |
+| `institute_id`       | String | Unique identifier for the institution      |
+| `student_username`   | String | Unique identifier for the student          |
+| `total_amount`       | String | Amount paid (in Bangladeshi Taka)          |
+| `user_wallet_number` | String | Rocket wallet number used for payment      |
+| `trxid`              | String | Unique transaction ID from Rocket          |
+| `paid_at`            | String | Payment timestamp (format: YYYYMMDDHHmmss) |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/rocket/accept-payment HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
@@ -106,11 +112,13 @@ data={
 Checks the status of a payment using the transaction ID.
 
 **Endpoint:**
+
 ```
 POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
 ```
 
 **Request Parameters:**
+
 ```json
 {
   "institute_id": "SPID9",
@@ -118,17 +126,18 @@ POST {{baseURL}}/invoices/ussd/rocket/check-payment-status
 }
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter      | Type   | Description                           |
+| -------------- | ------ | ------------------------------------- |
 | `institute_id` | String | Unique identifier for the institution |
-| `trxid` | String | Unique transaction ID to check |
+| `trxid`        | String | Unique transaction ID to check        |
 
 **Example Request:**
+
 ```
 POST /api/v1/invoices/ussd/rocket/check-payment-status HTTP/1.1
 Host: backend.smartpathshalabd.com
 Authorization: Basic [encoded credentials]
-Content-Type: multipart/form-data
+Content-Type: application/json
 
 data={
   "institute_id": "SPID9",
@@ -150,8 +159,6 @@ data={
 3. **Verify Payment Status**:
    - To check if a payment was successful
    - Call the `check-payment-status` endpoint with the institute_id and trxid
-
-
 
 ## Contact Information
 
